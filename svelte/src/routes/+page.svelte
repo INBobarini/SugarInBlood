@@ -46,3 +46,5 @@
 <FilterByInitial rows = {foods} bind:filteredRows={foodsToShow} initial={selectedLetter}/>
 
 <FilterByQuery rows = {foods} bind:filteredRows={foodsToShow} stringFragment={searchQuery}/>
+
+<p>hola</p>
