@@ -1,0 +1,8 @@
+node_modules/
+node_modules
+svelte/node_modules
+svelte/node_modules/
+svelte/build/
+svelte/.svelte-kit
+svelte/.svelte-kit/
+svelte/build
