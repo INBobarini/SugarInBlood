@@ -3,4 +3,6 @@ let foodsWithMacros= [{"name":"Acerola, Barbados Cherry (fresh)","calories":"32"
 let failedFoods = foodsWithMacros.filter(f=>{
     return f.carbohydrates === null || f.carbohydrates === undefined;
 })
-console.log(failedFoods.length)
+
+export {foodsWithMacros}
+
