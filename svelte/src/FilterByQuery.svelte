@@ -3,6 +3,8 @@
     export let filteredRows
     export let stringFragment
     
-    $: filteredRows = rows.filter((row)=>row.name.toLowerCase().includes(stringFragment.toLowerCase()))
+    $: filteredRows = rows.filter(
+        (row)=>row.name.toLowerCase().includes(stringFragment.toLowerCase())
+        )
 
 </script>
