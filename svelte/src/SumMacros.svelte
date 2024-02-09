@@ -18,7 +18,7 @@
             arr.forEach(e => {
                 total+= e[propertyToReduce]
             });
-            return total.toFixed(1)
+            return total
         }
         totalMeal['calories'] = sum(selectedMeals,'calories')
         totalMeal['carbohydrates'] =sum(selectedMeals,'carbohydrates')

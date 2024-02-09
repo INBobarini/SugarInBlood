@@ -24,7 +24,7 @@
             totalMeal['fats'] = 0
             return totalMeal
         }
-        console.log("selected meals")
+        
         function sum(arr, propertyToReduce){
             
             let total = 0
@@ -61,16 +61,17 @@
     }
     function loadMeals(event){
         let gramsNodeList = document.querySelectorAll('.input-grams');
-        let gramsArray = Array.from(gramsNodeList).map(input => input.value || 0);
+        let gramsArray = Array.from(gramsNodeList).map(input => parseFloat(input.value) || 0);
         
         meals = gramsArray.map((valueInGrams, i)=>{
             selectedFoods[i]['grams'] = valueInGrams
             if (gramsArray.length){
-                selectedFoods[i]['calories'] *= valueInGrams/100
-                selectedFoods[i]['carbohydrates'] *= valueInGrams/100
-                selectedFoods[i]['proteins'] *= valueInGrams/100
-                selectedFoods[i]['fats'] *= valueInGrams/100
+                selectedFoods[i]['calories'] *= Math.round(valueInGrams/100)
+                selectedFoods[i]['carbohydrates'] *= Math.round(valueInGrams/100)
+                selectedFoods[i]['proteins'] *= Math.round(valueInGrams/100)
+                selectedFoods[i]['fats'] *= Math.round(valueInGrams/100)
             }
+            console.log(selectedFoods[i])
             return { ...selectedFoods[i] } //different object
         })   
     }
