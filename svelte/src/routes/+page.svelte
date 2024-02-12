@@ -177,7 +177,8 @@
 <Plot
   {data}
   layout={{
-    margin: { t: 0 }
+    margin: { t: 0 },
+    title:"hello"
   }}
   fillParent='width'
   debounce={250}
