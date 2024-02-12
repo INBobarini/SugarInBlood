@@ -18,14 +18,11 @@
 	"type": "module",
 	"dependencies": {
 		"axios": "^1.6.7",
-		"d3": "^7.8.5",
+	
 		"fs": "^0.0.1-security",
-		"htmlparser": "^1.7.7",
 		"htmlparser2": "^9.1.0",
-		"layercake": "^8.0.2",
-		"layerchart": "^0.27.1",
 		"preprocess": "^3.2.0",
-		"svelte-plotly.js": "^0.3.2",
-		"svelte-ux": "^0.58.1"
+		"svelte-plotly.js": "^0.3.2"
+		
 	}
 }
