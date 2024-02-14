@@ -18,11 +18,16 @@
 	"type": "module",
 	"dependencies": {
 		"axios": "^1.6.7",
-	
 		"fs": "^0.0.1-security",
 		"htmlparser2": "^9.1.0",
 		"preprocess": "^3.2.0",
 		"svelte-plotly.js": "^0.3.2"
-		
+	},
+	"files": ["dist"],
+	"svelte": "dist/index.js",
+	"exports": {
+		".": {
+			"svelte": "./dist/index.js"
+		}
 	}
 }

@@ -1,6 +1,6 @@
 <script>
-    export let selectedMeals = []
     export let sumOfMacros = {}
+    export let selectedMeals = []
     
     function sumMacros(selectedMeals){
         //TO DO: add logging to an specific day/date
@@ -13,18 +13,13 @@
             return totalMeal
         }
         function sum(arr, propertyToReduce){
-            
             let total = 0
-            arr.forEach(e => {
-                total+= e[propertyToReduce]
-            });
-            return total
+            return arr.reduce((total, meal) => total + meal[propertyToReduce]*1, 0);
         }
         totalMeal['calories'] = sum(selectedMeals,'calories')
         totalMeal['carbohydrates'] =sum(selectedMeals,'carbohydrates')
         totalMeal['proteins'] = sum(selectedMeals,'proteins')
         totalMeal['fats'] = sum(selectedMeals,'fats')
-        console.log(totalMeal)
         return totalMeal
     }
 
