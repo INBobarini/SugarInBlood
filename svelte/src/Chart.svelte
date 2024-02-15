@@ -21,22 +21,25 @@
         ]
         return dataGenerated
     }
-
-    let layoutOpts = 
-    { 
+    function generateLayout(data){
+    
+    let layoutOpts = { 
         annotations: [{
         font: {
             size: 20
         },
         showarrow: false,
-        text:`${1500}<br>kcal`,
+        text:`${data.calories}<br>kcal`,
         x: 0.5,
         y: 0.5
         }],
         height: 400,
         width: 600,
-    }        
+        }    
+        return layoutOpts    
+    }
     $: dataOpts = generateData(data)
+    $: layoutOpts = generateLayout(data)
 </script>
 {#if dataOpts}
     <Plot {...{ data: dataOpts, layout: layoutOpts }} />

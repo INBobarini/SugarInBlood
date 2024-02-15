@@ -12,14 +12,18 @@
             totalMeal['fats'] = 0
             return totalMeal
         }
+        console.log(selectedMeals)
         function sum(arr, propertyToReduce){
             let total = 0
-            return arr.reduce((total, meal) => total + meal[propertyToReduce]*1, 0);
-        }
-        totalMeal['calories'] = sum(selectedMeals,'calories')
-        totalMeal['carbohydrates'] =sum(selectedMeals,'carbohydrates')
-        totalMeal['proteins'] = sum(selectedMeals,'proteins')
-        totalMeal['fats'] = sum(selectedMeals,'fats')
+            return arr.reduce((total, meal) => 
+            
+            total + (meal[propertyToReduce]), 0)
+            }
+        
+        totalMeal['calories'] = Math.trunc(sum(selectedMeals,'calories'))
+        totalMeal['carbohydrates'] = Math.trunc(sum(selectedMeals,'carbohydrates'))
+        totalMeal['proteins'] = Math.trunc(sum(selectedMeals,'proteins'))
+        totalMeal['fats'] = Math.trunc(sum(selectedMeals,'fats'))
         return totalMeal
     }
 

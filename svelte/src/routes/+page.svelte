@@ -36,15 +36,23 @@
         mealsOfTheDay = []
         let gramsNodeList = document.querySelectorAll('.input-grams');
         let gramsArray = Array.from(gramsNodeList).map(input => parseFloat(input.value) || 0);
-        console.log(gramsArray)
         if(selectedFoods.length){
             mealsOfTheDay = selectedFoods.map((e,i)=>{
+                selectedFoods[i].carbohydrates*= Math.trunc(gramsArray[i]/100)
+                selectedFoods[i].proteins *= Math.trunc(gramsArray[i]/100)
+                selectedFoods[i].calories *= Math.trunc(gramsArray[i]/100)
+                selectedFoods[i].fats *= Math.trunc(gramsArray[i]/100)
                 return { ...selectedFoods[i], grams: gramsArray[i] };
             })
         }
         return mealsOfTheDay
     }
-   
+    function removeMealandInput(event){
+        let elementsToRemove = document.querySelectorAll(`.${this.id}`)
+        elementsToRemove.forEach(element => {element.remove()});
+        console.log(selectedFoods[this.id])
+        selectedFoods = selectedFoods.filter((food, i) => i !== this.id);
+    }
 
 </script>
 <div id="main">
@@ -84,7 +92,11 @@
         {#if selectedFoods}
         <h3>Selected foods</h3>
             {#each selectedFoods as selectedFood, i}
-                <p><input class='input-grams' id={i} type="number" value=0> grams of {selectedFood.name}</p>
+            <p class= {i}>
+                <input id='input-grams-{i}' class={i} type="number" value=0> 
+                <button id='x-{i}' class= {i} on:click = {removeMealandInput}>X</button>
+                grams of {selectedFood.name}
+            </p>
             {/each}
             <button on:click={loadMeals}>Submit meals</button>
         {/if}
@@ -106,8 +118,6 @@
         {/if}
     </div>
 </div>
-
-
 
 
 <SumMacros selectedMeals = {mealsOfTheDay} bind:sumOfMacros= {totalMeal}/>
