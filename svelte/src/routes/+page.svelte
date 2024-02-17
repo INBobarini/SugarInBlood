@@ -1,5 +1,3 @@
-<h1>Welcome to SvelteKit</h1>
-
 <script>
     import FilterByInitial from '../FilterByInitial.svelte'
     import FilterByQuery from '../FilterByQuery.svelte'
@@ -12,9 +10,13 @@
     let foods = data.foods
     let foodsToShow
     let selectedFoods
-    let mealsOfTheDay = []
+    
     
     let totalMeal = {}
+    let mealsOfTheDay = []
+
+    let strTest = ''
+    
    
     //--------------
     
@@ -33,19 +35,13 @@
         }
     }
     function loadMeals(event){
-        mealsOfTheDay = []
-        let gramsNodeList = document.querySelectorAll('.input-grams');
-        let gramsArray = Array.from(gramsNodeList).map(input => parseFloat(input.value) || 0);
-        if(selectedFoods.length){
-            mealsOfTheDay = selectedFoods.map((e,i)=>{
-                selectedFoods[i].carbohydrates*= Math.trunc(gramsArray[i]/100)
-                selectedFoods[i].proteins *= Math.trunc(gramsArray[i]/100)
-                selectedFoods[i].calories *= Math.trunc(gramsArray[i]/100)
-                selectedFoods[i].fats *= Math.trunc(gramsArray[i]/100)
-                return { ...selectedFoods[i], grams: gramsArray[i] };
-            })
-        }
-        return mealsOfTheDay
+        let meals = []
+        let gramsNodeList = document.querySelectorAll('#input-grams');
+        let gramsArray = Array.from(gramsNodeList).map(e=>{
+            e.value
+        })
+        
+        return meals
     }
     function removeMealandInput(event){
         let elementsToRemove = document.querySelectorAll(`.${this.id}`)
@@ -71,8 +67,8 @@
     {#if foodsToShow}
         {#each foodsToShow as food}
             <tr>
-                <td><img loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
-                <td>{food.name}</td>
+                <td ><img loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
+                <td id="food-name">{food.name}</td>
                 <td>{food.GI}</td>
                 <td>{food.GL}</td>
                 <td>{food.calories}</td>
@@ -85,15 +81,15 @@
     {/if}
     </div>
     <div id="column">
+        <input type="text" bind:value={strTest}>
+        <p>{strTest}</p>
         <FilterByInitial rows = {foods} bind:filteredRows={foodsToShow}/>
-        
-        <input type="text" bind:value ={searchQuery}>
         <FilterByQuery rows = {foods} bind:filteredRows={foodsToShow} bind:stringFragment={searchQuery}/>
         {#if selectedFoods}
         <h3>Selected foods</h3>
             {#each selectedFoods as selectedFood, i}
-            <p class= {i}>
-                <input id='input-grams-{i}' class={i} type="number" value=0> 
+            <p class = {i}>
+                <input id='input-grams' class={i} type="number" value=0> 
                 <button id='x-{i}' class= {i} on:click = {removeMealandInput}>X</button>
                 grams of {selectedFood.name}
             </p>

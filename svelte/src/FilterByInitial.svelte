@@ -8,10 +8,15 @@
 
     $: filteredRows = rows.filter((row)=>row.name[0]===selectedLetter)
 </script>
-<div>
+<div id = "alphabet">
     {#each alphabet as letter}
     <button on:click={()=> selectedLetter=letter}>{letter}</button>
     {/each}
 </div>
+<style>
+    #alphabet{
+        width: 0.25 vw
+    }
+</style>
 
     

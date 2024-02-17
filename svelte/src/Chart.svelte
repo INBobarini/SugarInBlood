@@ -1,7 +1,7 @@
 <script>
     import Plot from "svelte-plotly.js";
     export let data
-
+    
     function generateData(data){
         let dataGenerated = [
         {
@@ -35,6 +35,8 @@
         }],
         height: 400,
         width: 600,
+        plot_bgcolor: 'rgba(255, 255, 255, 0.9)',
+        paper_bgcolor: 'rgba(255, 255, 255, 0.9)'
         }    
         return layoutOpts    
     }
