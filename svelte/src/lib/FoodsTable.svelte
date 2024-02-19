@@ -41,3 +41,10 @@
     <td><button id={i} on:click={pushFood}>+</button></td>
 </tr>
 {/each}
+
+<style>
+    thead, tr{
+        border: 1px solid blue;
+        background-color: gray;
+    }
+</style>
