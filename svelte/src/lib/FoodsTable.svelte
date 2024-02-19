@@ -18,7 +18,7 @@
 </script>
     
 <thead>
-    <tr>
+    <tr class="text-green-200">
         <th colspan="2">Name</th>
         <th>GI</th>
         <th>GL</th>
@@ -43,8 +43,5 @@
 {/each}
 
 <style>
-    thead, tr{
-        border: 1px solid blue;
-        background-color: gray;
-    }
+
 </style>
