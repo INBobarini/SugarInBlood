@@ -25,16 +25,16 @@
         
     }
 </script>
-
-<div class="listed-row">
-    {#each listedFoods as food, i}
-        <span>{i}</span>
-        <img src={food.photo} alt="">
-        <span>{food.name}</span>
-        <input name='grams' type="number" bind:value = {gramsArray[i]}>
-        <span>grams</span>
-        <button id={i} on:click={removeFromList}>X</button>
-        <br>
-    {/each}
-    <button on:click={addGrams}>Submit</button>
+<div class="border">
+<h3 class="font-bold from-neutral-500">Selected meals</h3>
+{#each listedFoods as food, i}
+    <div class="flex flex-row h-15" >
+        <img class="border"src={food.photo} alt="">
+        <span class="align-middle w-1/2 border-t border-b">{food.name}</span>
+        <input class="h-100 w-1/4"name='grams' type="number" bind:value = {gramsArray[i]}>
+        <button class="bg-red w-1/12" id={i} on:click={removeFromList}>X</button>
+       <br>
+    </div>
+{/each}
+    <button class='bg-green-dark text-black border-b-red' on:click={addGrams}>Submit</button>
 </div>

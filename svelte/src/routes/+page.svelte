@@ -20,10 +20,10 @@ $: totalMacros = {}
 $: console.log(totalMacros)
 </script>
 
-<div class = 'main'>
-    <div class = 'food-menu'>
-        <div class ='food-menu-header'>
-            <div class = 'alphabet'>
+<div class ='container flex flex-col md:flex-row-reverse'>
+    <div class='food-menu w-full md:w-4/6 order-2'>
+        <div class ='food-menu-header flex '>
+            <div class = 'alphabet w-4/6 flex justify-start'>
                 <FilterByInitial rows = {foods} bind:filteredRows = {foodsToShow}/>
             </div>
             <div class="query">
@@ -35,12 +35,9 @@ $: console.log(totalMacros)
             <FoodsTable rows = {foodsToShow} bind:selectedRows = {selectedFoods}/>
         {/if}
         </div>
-        
-        
     </div>
-    <div class = 'selected-foods'>
+    <div class='selected-foods w-full md:w-2/6 order-1'>
         {#if selectedFoods.length}
-            <h3>Selected meals</h3>
             <FoodsList bind:listedFoods = {selectedFoods} bind:total = {totalMeals}/>
         {/if}
         {#if totalMeals.length !== 0}
@@ -53,20 +50,5 @@ $: console.log(totalMacros)
 </div>
 
 <style>
-.food-menu {
-    width: 70%;
-    float: left;
-}
-.food-menu-header{
-    display: flex
-}
-.food-menu-content{
-    width: 100%;
-    border: 1px solid orange
-}
 
-.selected-foods {
-    width: 30%;
-    float: left;
-}
 </style>

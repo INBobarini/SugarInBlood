@@ -18,7 +18,7 @@
 </script>
     
 <thead id = 'food-table-head '>
-    <tr class = 'bg-red-dark '>
+    <tr class = 'bg-red-light '>
         <th class='w-1/12 text-center ' ></th>
         <th class='w-5/12 text-center'>Name</th>
         <th class='w-1/12 text-center'>GI</th>

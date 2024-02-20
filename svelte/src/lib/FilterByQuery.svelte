@@ -8,4 +8,4 @@
         )
 
 </script>
-<input type="text" bind:value = {stringFragment}>
+<input class="w-full h-8"type="text" bind:value = {stringFragment}>

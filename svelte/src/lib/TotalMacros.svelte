@@ -20,27 +20,28 @@
     }
     $: totalMacros = sumMacros(meals)
 </script>
+<div>
 {#if totalMacros}
-<table>
+<table class='w-full'>
     <thead>
         <tr>
-            <th>Food</th>
-            <th>g</th>
-            <th>kcal</th>
-            <th>C</th>
-            <th>P</th>
-            <th>F</th>
+            <th class='w-1/6 border'>Food</th>
+            <th class='w-1/6 border'>g</th>
+            <th class='w-1/6 border'>kcal</th>
+            <th class='w-1/6 border'>C</th>
+            <th class='w-1/6 border'>P</th>
+            <th class='w-1/6 border'>F</th>
         </tr>
     </thead>
     <tbody>
         {#each meals as meal}
         <tr>
-            <td><img src= {meal.photo} alt= {meal.name}/></td>
-            <td>{meal.grams}</td>
-            <td>{meal.calories}</td>
-            <td>{meal.carbohydrates}</td>
-            <td>{meal.proteins}</td>
-            <td>{meal.fats}</td>
+            <td class='w-1/6 border text-center'><img src= {meal.photo} alt= {meal.name} class='w-full'/></td>
+            <td class='w-1/6 border text-center'>{meal.grams}</td>
+            <td class='w-1/6 border text-center'>{meal.calories}</td>
+            <td class='w-1/6 border text-center'>{meal.carbohydrates}</td>
+            <td class='w-1/6 border text-center'>{meal.proteins}</td>
+            <td class='w-1/6 border text-center'>{meal.fats}</td>
         </tr>
         {/each}
     </tbody>
@@ -53,19 +54,9 @@
             <th>{totalMacros.proteins}</th>
             <th>{totalMacros.fats}</th>
         </tr>
-    </tfoot>
-    
-        
-    
+    </tfoot>    
 </table>
 {/if}
-
+</div>
 <style>
-    td, th{
-        width: 25px;
-        height: 25px;
-        border: 0.5px solid black;
-        text-align: center; 
-        vertical-align: middle;
-    }
 </style>

@@ -34,7 +34,7 @@
         y: 0.5
         }],
         height: 400,
-        width: 600,
+        width: 400,
         plot_bgcolor: 'rgba(255, 255, 255, 0.9)',
         paper_bgcolor: 'rgba(255, 255, 255, 0.9)'
         }    
@@ -44,5 +44,8 @@
     $: layoutOpts = generateLayout(data)
 </script>
 {#if dataOpts}
-    <Plot {...{ data: dataOpts, layout: layoutOpts }} />
+    <div>
+        <Plot {...{ data: dataOpts, layout: layoutOpts }} />
+    </div>
+    
 {/if}
