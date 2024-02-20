@@ -17,31 +17,36 @@
     }
 </script>
     
-<thead>
-    <tr class="text-green-200">
-        <th colspan="2">Name</th>
-        <th>GI</th>
-        <th>GL</th>
-        <th>kcal</th>
-        <th>carbohydrates</th>
-        <th>proteins</th>
-        <th>fats</th>
+<thead id = 'food-table-head '>
+    <tr class = 'bg-red-dark '>
+        <th class='w-1/12 text-center ' ></th>
+        <th class='w-5/12 text-center'>Name</th>
+        <th class='w-1/12 text-center'>GI</th>
+        <th class='w-1/12 text-center'>GL</th>
+        <th class='w-1/12 text-center'>kcal</th>
+        <th class='w-1/12 text-center'>carbohydrates</th>
+        <th class='w-1/12 text-center'>proteins</th>
+        <th class='w-1/12 text-center'>fats</th>
     </tr>
 </thead>
 {#each rows as food , i}
-<tr>
-    <td ><img loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
-    <td id="food-name">{food.name}</td>
-    <td>{food.GI}</td>
-    <td>{food.GL}</td>
-    <td>{food.calories}</td>
-    <td>{food.carbohydrates}</td>
-    <td>{food.proteins}</td>
-    <td>{food.fats}</td>
-    <td><button id={i} on:click={pushFood}>+</button></td>
-</tr>
+    <tr>
+        <td class= "w-1/12 text-center align-middle"><img loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
+        <td id="food-name" class="w-5/12 text-center align-middle border hover:">
+            <button class="single-food rounded bg-red-light hover:bg-red " id={i} on:click={pushFood}>
+                {food.name}
+            </button>
+        </td>
+        <td class= "w-1/12 text-center align-middle">{food.GI}</td>
+        <td class= "w-1/12 text-center align-middle">{food.GL}</td>
+        <td class= "w-1/12 text-center align-middle">{food.calories}</td>
+        <td class= "w-1/12 text-center align-middle">{food.carbohydrates}</td>
+        <td class= "w-1/12 text-center align-middle">{food.proteins}</td>
+        <td class= "w-1/12 text-center align-middle">{food.fats}</td>
+    </tr>
 {/each}
 
 <style>
-
+    
 </style>
+
