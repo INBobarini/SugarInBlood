@@ -8,4 +8,7 @@
         )
 
 </script>
-<input class="w-full h-8"type="text" bind:value = {stringFragment}>
+<div class="query flex flex-row justify-end">
+    <span class= " flex items-center" >Search </span>
+    <input class=" flex items-center w-1/4 h-8 : border-red rounded"type="text" bind:value = {stringFragment}>
+</div>

@@ -7,26 +7,19 @@ const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
 
   theme: {
-    extend: {},
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      red: {
-        light: '#952323',
-        DEFAULT: '#a73121',
-        dark: '#f0997d',
-      },
-      yellow: {
-        light: '#e38b29',
-        DEFAULT: '#f1a661',
-        dark: '#ffd8a9',
-      },
-      green: {
-        dark: '#829460',
-        DEFAULT: '#4e6c50',
-        light: '#224b0c',
+    extend: {
+      colors:{
+        'carb-dark': '#865439',
+        'carb-light': '#c68b59',
+        'fat-dark': '#face7f',
+        'fat-light': '#fcf0c8',
+        'kcal-dark': '#32502e',
+        'kcal-light': '#406343',
+        'protein-dark': '#630a10',
+        'protein-light' : '#911f27',
+
       }
-    }                                
+    },                           
   },
   plugins: [forms, typography, daisyui],
 };

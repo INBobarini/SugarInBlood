@@ -1,6 +1,7 @@
 <script>
     export let listedFoods
     export let total
+    
 
     let gramsArray = []
 
@@ -26,15 +27,15 @@
     }
 </script>
 <div class="border">
-<h3 class="font-bold from-neutral-500">Selected meals</h3>
-{#each listedFoods as food, i}
-    <div class="flex flex-row h-15" >
-        <img class="border"src={food.photo} alt="">
-        <span class="align-middle w-1/2 border-t border-b">{food.name}</span>
-        <input class="h-100 w-1/4"name='grams' type="number" bind:value = {gramsArray[i]}>
-        <button class="bg-red w-1/12" id={i} on:click={removeFromList}>X</button>
-       <br>
-    </div>
-{/each}
+    <h3 class="font-bold">Selected meals</h3>
+    {#each listedFoods as food, i}
+        <div class="flex flex-row max-w-full border border-red-dark">
+            <img class="w-1/6" src={food.photo} alt="{food.name}">
+            <span class="align-middle w-1/2 border-t border-b">{food.name}</span>
+            <input class="h-100 w-1/4"name='grams' type="number" bind:value = {gramsArray[i]}>
+            <button class="bg-red-700 w-1/12" id={i} on:click={removeFromList}>X</button>
+        <br>
+        </div>
+    {/each}
     <button class='bg-green-dark text-black border-b-red' on:click={addGrams}>Submit</button>
 </div>
