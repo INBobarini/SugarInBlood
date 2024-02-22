@@ -1,15 +1,25 @@
 /* Write your global styles here, in PostCSS syntax */
 @tailwind base;
-* {
-  box-sizing: border-box;
+
+th,td{
+    border: 0.1em solid #865439;
+    display:flex; 
+    align-items:center;
+    justify-content:center;
 }
-img {
-  border: 1px solid gray;
+th{
+    font-weight: bold;
+    background-color: #face7f ;
 }
-.main {
-  display: flex;
-  border: 1px solid red;
-  padding: 2px;
+#tf{
+    background-color: #face7f ;
 }
+img{
+  border: 0.1em solid #c68b59;
+}
+input{
+  border-radius: 0.25rem;
+}
+
 @tailwind components;
 @tailwind utilities;

@@ -15,6 +15,7 @@
         total = listedFoods.map((food, i)=>{
             let macros = {...food}
             macros.name = food.name
+            
             macros.calories = food.calories * gramsArray[i] / 100
             macros.carbohydrates = food.carbohydrates * gramsArray[i] / 100
             macros.proteins = food.proteins * gramsArray[i] / 100
@@ -26,16 +27,17 @@
         
     }
 </script>
-<div class="border">
+<div class="flex justify-between">
     <h3 class="font-bold">Selected meals</h3>
+    <input placeholder ="day" type="date">
+    <button class='bg-kcal-light rounded text-black border-b-red' on:click={addGrams}>Submit</button>
+</div>
+<div class="grid grid-cols-2">
     {#each listedFoods as food, i}
-        <div class="flex flex-row max-w-full border border-red-dark">
-            <img class="w-1/6" src={food.photo} alt="{food.name}">
-            <span class="align-middle w-1/2 border-t border-b">{food.name}</span>
-            <input class="h-100 w-1/4"name='grams' type="number" bind:value = {gramsArray[i]}>
-            <button class="bg-red-700 w-1/12" id={i} on:click={removeFromList}>X</button>
-        <br>
+        <div class="grid grid-cols-6 border">
+            <img class="col-span-1" src={food.photo} alt="{food.name}">
+            <input class="col-span-4" name='grams' type="number" placeholder="grams" bind:value = {gramsArray[i]}>
+            <button class="bg-white border border-gray-500" id={i} on:click={removeFromList}>X</button>
         </div>
     {/each}
-    <button class='bg-green-dark text-black border-b-red' on:click={addGrams}>Submit</button>
 </div>

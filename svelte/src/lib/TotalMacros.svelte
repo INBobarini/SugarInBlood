@@ -12,7 +12,7 @@
         
         function sum (meals, macro){
             return meals.reduce((total, meal)=>{
-                return total + meal[macro]
+                return Math.round(total + meal[macro], 1)
             }, 0)
         }
         
@@ -21,42 +21,40 @@
     $: totalMacros = sumMacros(meals)
 </script>
 <div>
+
 {#if totalMacros}
-<table class='w-full'>
-    <thead>
-        <tr>
-            <th class='w-1/6 border'>Food</th>
-            <th class='w-1/6 border'>g</th>
-            <th class='w-1/6 border'>kcal</th>
-            <th class='w-1/6 border'>C</th>
-            <th class='w-1/6 border'>P</th>
-            <th class='w-1/6 border'>F</th>
-        </tr>
-    </thead>
-    <tbody>
+    <div id = 'macros-summary' class='w-full'>
+        <h3>Summary</h3>
+        <div id="summary-header"class ='grid grid-cols-6'>
+            <th class=' '>Food</th>
+            <th class=' '>g</th>
+            <th class=' '>kcal</th>
+            <th class=' '>C</th>
+            <th class=' '>P</th>
+            <th class=' '>F</th>
+        </div>
         {#each meals as meal}
-        <tr>
-            <td class='w-1/6 border text-center'><img src= {meal.photo} alt= {meal.name} class='w-full'/></td>
-            <td class='w-1/6 border text-center'>{meal.grams}</td>
-            <td class='w-1/6 border text-center'>{meal.calories}</td>
-            <td class='w-1/6 border text-center'>{meal.carbohydrates}</td>
-            <td class='w-1/6 border text-center'>{meal.proteins}</td>
-            <td class='w-1/6 border text-center'>{meal.fats}</td>
-        </tr>
+        <div id = "summary-content" class='grid grid-cols-6'>
+            <td class='flex items-center justify-center'><img src= {meal.photo} alt= {meal.name} class='w'/></td>
+            <td class='text-center'>{meal.grams}</td>
+            <td class=' text-center'>{meal.calories}</td>
+            <td class=' text-center'>{meal.carbohydrates}</td>
+            <td class=' text-center'>{meal.proteins}</td>
+            <td class=' text-center'>{meal.fats}</td>
+        </div>
         {/each}
-    </tbody>
-    <tfoot>
-        <tr>
-            <th> Total</th>
-            <th>{totalMacros.grams}</th>
-            <th>{totalMacros.calories}</th>
-            <th>{totalMacros.carbohydrates}</th>
-            <th>{totalMacros.proteins}</th>
-            <th>{totalMacros.fats}</th>
-        </tr>
-    </tfoot>    
-</table>
+        <div id=summary-totals class='grid grid-cols-6'>
+            <th id='tf'>Total</th>
+            <th id='tf'>{totalMacros.grams}</th>
+            <th id='tf'>{totalMacros.calories}</th>
+            <th id='tf'>{totalMacros.carbohydrates}</th>
+            <th id='tf'>{totalMacros.proteins}</th>
+            <th id='tf'>{totalMacros.fats}</th>
+        </div>
+    </div>
 {/if}
 </div>
 <style>
+
+
 </style>

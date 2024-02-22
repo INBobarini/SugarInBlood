@@ -41,7 +41,6 @@
         else {
             favorites = [...favorites, newFood ]
         }
-        console.log(favorites)
     }
 </script>
     
@@ -54,42 +53,42 @@
     {/each}
 </div>
 
-
-<thead id = 'food-table-head '>
-    <tr>
-        <th class='w-1/12 text-center '></th>
-        <th class='w-4/12 text-center'>Name</th>
-        <th class='w-1/12 text-center'>GI</th>
-        <th class='w-1/12 text-center'>GL</th>
-        <th class='w-1/12 text-center'>kcal</th>
-        <th class='w-1/12 text-center'>Carbs</th>
-        <th class='w-1/12 text-center'>Proteins</th>
-        <th class='w-1/12 text-center'>Fats</th>
-    </tr>
-</thead>
-{#each rows as food , i}
-    <tr class = 'row group' id={i} on:click={pushFromTable}>
-        <td class= "w-1/12 group-hover:bg-fat-dark"><img class = " object-cover" loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
-        <td id="food-name" class="w-4/12 h-full border group-hover:bg-fat-dark">
-            <span class="flex-grow ml-2">{food.name}</span>
-            {#if !favorites.some(fav=>fav.name===food.name)||!favorites.length}
-                <button class="text-fat-light" id={i} on:click={saveToFavorites}> ★ </button> 
-            {:else}
-            <span class="">★</span>
-            {/if}
+<div id='food-table' class='border border-carb-dark'>
+    <div id = 'food-table-header' class='grid grid-cols-12 gap-0 font-bold'>
+        <th class=''></th>
+        <th class='grid grid-cols-subgrid col-span-5'>Name</th>
+        <th class=''>GI</th>
+        <th class=''>GL</th>
+        <th class=''>kcal</th>
+        <th class=''>Carbs</th>
+        <th class=''>Prots</th>
+        <th class=''>Fats</th>
+    </div>
+    <div id='food-table-content' class=''>
+    {#each rows as food , i}
+    <button id={i} on:click={pushFromTable} class='border border-carb-dark row group grid grid-cols-12 gap-0 w-full'>
+        <td class= " group-hover:bg-fat-dark "><img class = "object-cover w-full h-full " loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
+        <td id="food-name" class="grid grid-cols-subgrid col-span-5 border group-hover:bg-fat-dark align-center h-full">
+            <div id='name&button' class="col-start-1 col-end-6 text-left ">
+                <span class="">{food.name}</span>
+                {#if !favorites.some(fav=>fav.name===food.name)||!favorites.length}
+                    <button class="text-fat-dark" id={i} on:click={saveToFavorites}> ★ </button> 
+                {:else}
+                <span class="">★</span>
+                {/if}
+            </div>
         </td>
-        <td class= "w-1/12 text-center align-middle group-hover:bg-fat-dark">{food.GI}</td>
-        <td class= "w-1/12 text-center align-middle group-hover:bg-fat-dark">{food.GL}</td>
-        <td class= "w-1/12 text-center align-middle group-hover:bg-fat-dark">{food.calories}</td>
-        <td class= "w-1/12 text-center align-middle group-hover:bg-fat-dark">{food.carbohydrates}</td>
-        <td class= "w-1/12 text-center align-middle group-hover:bg-fat-dark">{food.proteins}</td>
-        <td class= "w-1/12 text-center align-middle group-hover:bg-fat-dark">{food.fats}</td>
-    </tr>
-{/each}
-
+        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.GI}</td>
+        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.GL}</td>
+        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.calories}</td>
+        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.carbohydrates}</td>
+        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.proteins}</td>
+        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.fats}</td>
+    </button>
+    {/each}
+    </div>
+</div>
 <style>
-td,th{
-    border: 0.1em solid #402218;
-}
+
 </style>
 

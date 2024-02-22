@@ -10,13 +10,15 @@
                 data.proteins, 
                 data.fats
                 ],
-            labels: ["Carbohydrates","Proteins", "Fats"],
+            labels: ["Carbohydrates[g]","Proteins[g]", "Fats[g]"],
             type: 'pie',
             hole: .4,
             //text: `${macrosSingleDayObj.calories}<br>kcal`,
             marker:{
-                colors: ["red","blue","green"]
-            } 
+                colors: ["#c68b59","#911f27","#face7f"]
+            },
+            
+            automargin: true 
         }
         ]
         return dataGenerated
@@ -26,26 +28,28 @@
     let layoutOpts = { 
         annotations: [{
         font: {
-            size: 20
+            size: 16,
+            color: '#32502e'
         },
         showarrow: false,
         text:`${data.calories}<br>kcal`,
         x: 0.5,
         y: 0.5
         }],
+        showlegend: false,
         height: 400,
-        width: 400,
-        plot_bgcolor: 'rgba(255, 255, 255, 0.9)',
-        paper_bgcolor: 'rgba(255, 255, 255, 0.9)'
+        width: 350,
+        plot_bgcolor: 'rgba(255, 255, 255, 0)',
+        paper_bgcolor: 'rgba(255, 255, 255, 0)'
         }    
         return layoutOpts    
     }
     $: dataOpts = generateData(data)
     $: layoutOpts = generateLayout(data)
 </script>
+
 {#if dataOpts}
-    <div>
-        <Plot {...{ data: dataOpts, layout: layoutOpts }} />
-    </div>
-    
+<div id="chart-container" class="flex justify-center">
+    <Plot {...{ data: dataOpts, layout: layoutOpts }} />
+</div>
 {/if}
