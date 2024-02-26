@@ -22,8 +22,8 @@ $: totalMacros = {}
 
 </script>
 
-<div class ='container flex flex-col lg:flex-row-reverse'>
-    <div class= 'food-menu w-full lg:w-4/6 order-2 p-2 m-2 border'>
+<div class ='text-base sm:text-sm md:text-lg lg:text-xl grid'>
+    <div class= 'food-menu w-full lg:w-4/6 order-2 border text'>
         <FilterByInitial rows = {foods} bind:filteredRows = {foodsToShow}/>
         <FilterByQuery rows = {foods} bind:filteredRows = {foodsToShow}/>
         {#if foods}
