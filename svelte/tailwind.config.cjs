@@ -17,7 +17,6 @@ const config = {
         'kcal-light': '#406343',
         'protein-dark': '#630a10',
         'protein-light' : '#911f27',
-
       }
     },                           
   },

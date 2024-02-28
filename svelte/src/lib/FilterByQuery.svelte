@@ -3,12 +3,15 @@
     export let filteredRows
     let stringFragment = ''
     
-    $: filteredRows = rows.filter(
-        (row)=>row.name.toLowerCase().includes(stringFragment.toLowerCase())
+    $: filteredRows = stringFragment.length < 3 ? 
+    rows.slice(0,10) :  
+    rows.filter((row)=>row.name.toLowerCase().includes(stringFragment.toLowerCase())
         ).sort((a, b) => a.name.localeCompare(b.name));
+    
+   
 
 </script>
-<div class="query flex flex-row justify-end">
-    <span class= " flex items-center" >Search </span>
-    <input class=" flex items-center w-1/4 h-8 rounded"type="text" bind:value = {stringFragment}>
+<div class="query flex flex-row justify-end h-8">
+    <span class= " flex items-center h-full"  >Search </span>
+    <input class=" flex items-center w-32 h-full rounded"type="text" bind:value = {stringFragment}>
 </div>

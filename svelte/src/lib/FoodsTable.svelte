@@ -3,6 +3,13 @@
     export let selectedRows
     export let favorites
 
+    let isAccordionOpen = true;
+    $: accordionSymbol = isAccordionOpen ? '-' : '+'
+
+    function toggleAccordion() {
+        isAccordionOpen = !isAccordionOpen;
+    }
+
     function pushFromTable(event){
         let newFood = rows[this.id*1]
         if (!selectedRows.length){
@@ -44,51 +51,56 @@
     }
 </script>
     
-<div class = "favorites grid grid-cols-10 gap-2">
+<div class="favorites grid grid-cols-10 max-h-16 w-full">
     {#each favorites as favFood, i}
-        <button id={i} on:click={pushFavoriteToList} on:contextmenu = {removeFromFavorites}>
-            <img src={favFood.photo} alt={favFood.name} class="w-full h-full object-cover" >
+    <div class="h-16" style="position: relative;">
+        <button id={i} on:click={pushFavoriteToList} class="h-full w-16 relative">
+            <img src={favFood.photo} alt={favFood.name} class="h-full">
+            <button id={i} on:click={removeFromFavorites} class='bg-protein-light h-6 w-6 rounded-full text-fat-dark hover:bg-protein-dark' style="position: absolute; top: 0; right: 0; ">X</button>
         </button>
-        
+    </div>
     {/each}
 </div>
-
-<div id='food-table' class='border border-carb-dark'>
-    <div id = 'food-table-header' class='grid grid-cols-12 gap-0 font-bold'>
-        <th class=''></th>
-        <th class='grid grid-cols-subgrid col-span-5'>Name</th>
-        <th class=''>GI</th>
-        <th class=''>GL</th>
-        <th class=''>kcal</th>
-        <th class=''>Carbs</th>
-        <th class=''>Prots</th>
-        <th class=''>Fats</th>
-    </div>
-    <div id='food-table-content' class=''>
-    {#each rows as food , i}
-    <button id={i} on:click={pushFromTable} class='border border-carb-dark row group grid grid-cols-12 gap-0 w-full'>
-        <td class= " group-hover:bg-fat-dark "><img class = "object-cover w-full h-full " loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
-        <td id="food-name" class="grid grid-cols-subgrid col-span-5 border group-hover:bg-fat-dark align-center h-full">
-            <div id='name&button' class="col-start-1 col-end-6 text-left ">
-                <span class="">{food.name}</span>
-                {#if !favorites.some(fav=>fav.name===food.name)||!favorites.length}
-                    <button class="text-fat-dark" id={i} on:click={saveToFavorites}> ★ </button> 
-                {:else}
-                <span class="">★</span>
-                {/if}
-            </div>
-        </td>
-        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.GI}</td>
-        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.GL}</td>
-        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.calories}</td>
-        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.carbohydrates}</td>
-        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.proteins}</td>
-        <td class= "text-left align-middle h-full group-hover:bg-fat-dark">{food.fats}</td>
-    </button>
-    {/each}
+<div class='accordion container'>
+    <div id='food-table' class='accordion-item' class:active={isAccordionOpen} >
+        <button id = 'food-table-header' class='accordion-header w-full flex 'on:click={toggleAccordion}>
+            <th class='w-1/12'> {accordionSymbol} </th>
+            <th class='w-5/12'>Name</th>
+            <th class='w-1/12'>GI</th>
+            <th class='w-1/12'>GL</th>
+            <th class='w-1/12'>kcal</th>
+            <th class='w-1/12'>Carbs</th>
+            <th class='w-1/12'>Prots</th>
+            <th class='w-1/12'>Fats</th>
+        </button>
+        <div id='food-table-content' class='accordion-content'>
+            {#each rows as food , i}
+            <button id={i} on:click={pushFromTable} class='row group grid grid-cols-12 gap w-full'>
+                <td class= "group"><img class = "object-cover w-full h-full " loading = "lazy" decoding ="async" src= {food.photo} alt="{food.name}"></td>
+                <td id="food-name" class="grid grid-cols-subgrid col-span-5 group-hover:bg-fat-dark group-hover:text-carb-dark align-center h-full">
+                    <div id='name&button' class="col-start-1 col-end-6 text-left ">
+                        <span class="">{food.name}</span>
+                        {#if !favorites.some(fav=>fav.name===food.name)||!favorites.length}
+                            <button class="" id={i} on:click={saveToFavorites}> ★ </button> 
+                        {:else}
+                        <span class="text-fat-dark group-hover:text-carb-dark"  >★</span>
+                        {/if}
+                    </div>
+                </td>
+                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.GI}</td>
+                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.GL}</td>
+                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.calories}</td>
+                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.carbohydrates}</td>
+                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.proteins}</td>
+                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.fats}</td>
+            </button>
+            {/each}
+        </div>
     </div>
 </div>
 <style>
-
+    #food-table-header{
+        height: 3em;
+    }
 </style>
 

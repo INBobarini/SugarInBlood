@@ -1,25 +1,90 @@
 /* Write your global styles here, in PostCSS syntax */
 @tailwind base;
-
+@tailwind components;
+@tailwind utilities;
 th,td{
-    border: 0.1em solid #865439;
-    display:flex; 
+    display:flex;
     align-items:center;
     justify-content:center;
 }
-th{
-    font-weight: bold;
-    background-color: #face7f ;
-}
-#tf{
-    background-color: #face7f ;
-}
+
 img{
-  border: 0.1em solid #c68b59;
 }
 input{
-  border-radius: 0.25rem;
+  
 }
 
-@tailwind components;
-@tailwind utilities;
+*{
+  font-family: 'roboto';
+  font-size: 14px;
+}
+
+/*sm*/
+@media (min-width: 640px) {
+  *{
+      font-size: 16px;
+  }
+}
+/*md*/
+@media (min-width: 768px) {
+  * {
+      font-size: 18px;
+  }
+}
+/*lg*/
+@media (min-width: 1024px) {
+  * {
+      font-size: 20px;
+  }
+}
+/*xl*/
+@media (min-width: 1280px) {
+  * {
+      font-size: 22px;
+  }
+}
+/*2xl*/
+@media (min-width: 1536px) {
+  * {
+      font-size: 24px;
+  }
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  border: 1px solid #;
+  margin-bottom: 5px;
+}
+
+.accordion-header {
+  background-color: #f1f1f1;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion-content {
+  display: none;
+  padding: 10px;
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+/*
+colors:{
+  'carb-dark': '#865439',
+  'carb-light': '#c68b59',
+  'fat-dark': '#face7f',
+  'fat-light': '#fcf0c8',
+  'kcal-dark': '#32502e',
+  'kcal-light': '#406343',
+  'protein-dark': '#630a10',
+  'protein-light' : '#911f27',
+}
+*/
+
