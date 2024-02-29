@@ -25,14 +25,14 @@ $: totalMacros = {}
 </script>
 
 <div class ='container'>
-    <div class= 'border border-green-400'>
+    <div class= ''>
         <!--<FilterByInitial rows = {foods} bind:filteredRows = {foodsToShow}/>-->
         <FilterByQuery rows = {foods} bind:filteredRows = {foodsToShow}/>
         {#if foods}
         <FoodsTable rows = {foodsToShow} bind:selectedRows = {selectedFoods} bind:favorites = {favoriteFoods}/>
         {/if}
     </div>
-    <div class='border border-yellow-400'>
+    <div class=''>
         {#if selectedFoods.length}
             {#if selectedFoods.length}
             <FoodsList bind:listedFoods = {selectedFoods} bind:total = {totalMeals}/>

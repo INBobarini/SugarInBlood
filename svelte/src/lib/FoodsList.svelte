@@ -33,22 +33,24 @@
 </script>
 <div class='accordion'>
     <div class='accordion-item' class:active={isAccOpen}>
-        <button class="accordion-header selected-foods-header h-8 container flex justify-between"on:click={toggleAccord}>
+        <button class="accordion-header selected-foods-header h-12 container flex justify-between " on:click={toggleAccord}>
             <button>{accSymbol}</button>
-            <h3 class="font-bold">Selected meals</h3>
-            <div class ="h-8">
-                <span>Day to register</span>
+            <h3 class="font-bold ">Selected meals</h3>
+            <div class ="h-12 flex">
                 <input type="date" class="h-8 w-32">
                 <button class='bg-kcal-light rounded text-black border-b-red h-8 w-16' on:click={addGrams}>Submit</button>
             </div>
         </button>
         <div class=" accordion-content">
             {#each listedFoods as food, i}
-                <div class="grid grid-cols-3 h-16" style="position: relative;">
-                    <img class="w-full h-full object-cover" src={food.photo} alt="{food.name}">
+            <div class="flex h-12">
+                <div class="flex relative w-12">
+                    <img class="object-cover" src={food.photo} alt="{food.name}">
                     <button class='bg-protein-light h-6 w-6 rounded-full text-fat-dark hover:bg-protein-dark' style='position: absolute; top: 0; right: 0;' id={i} on:click={removeFromList}>X</button>
-                    <input class="col-span-2" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
                 </div>
+                <input class="w-1/2 h-full" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
+                <input class="w-1/3 h-full" name="time" type="time" step="1800">
+            </div>
             {/each}
         </div>
     </div>
