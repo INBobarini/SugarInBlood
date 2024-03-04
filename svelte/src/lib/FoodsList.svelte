@@ -33,6 +33,7 @@
 </script>
 <div class='accordion'>
     <div class='accordion-item' class:active={isAccOpen}>
+<<<<<<< HEAD
         <div class="accordion-header selected-foods-header h-8 mb-1 container flex justify-between">
             <button class="accordion-btn" on:click={toggleAccord}>{accSymbol}</button>
             <h3 >Selected meals</h3>
@@ -47,6 +48,26 @@
                 <input class="w-full" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
             </div>
                 
+=======
+        <button class="accordion-header selected-foods-header h-12 container flex justify-between " on:click={toggleAccord}>
+            <button>{accSymbol}</button>
+            <h3 class="font-bold ">Selected meals</h3>
+            <div class ="h-12 flex">
+                <input type="date" class="h-8 w-32">
+                <button class='bg-kcal-light rounded text-black border-b-red h-8 w-16' on:click={addGrams}>Submit</button>
+            </div>
+        </button>
+        <div class=" accordion-content">
+            {#each listedFoods as food, i}
+            <div class="flex h-12">
+                <div class="flex relative w-12">
+                    <img class="object-cover" src={food.photo} alt="{food.name}">
+                    <button class='bg-protein-light h-6 w-6 rounded-full text-fat-dark hover:bg-protein-dark' style='position: absolute; top: 0; right: 0;' id={i} on:click={removeFromList}>X</button>
+                </div>
+                <input class="w-1/2 h-full" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
+                <input class="w-1/3 h-full" name="time" type="time" step="1800">
+            </div>
+>>>>>>> refs/remotes/origin/main
             {/each}
         </div>
         <div class="flex max-h-8 items-center">
