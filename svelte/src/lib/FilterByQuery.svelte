@@ -13,5 +13,5 @@
 </script>
 <div class="query flex flex-row justify-end h-8">
     <span class= " flex items-center h-full"  >Search </span>
-    <input class=" flex items-center w-32 h-full rounded"type="text" bind:value = {stringFragment}>
+    <input class=" flex items-center w-32 h-full" type="text" bind:value = {stringFragment}>
 </div>

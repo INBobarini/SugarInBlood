@@ -37,7 +37,7 @@
         y: 0.5
         }],
         showlegend: false,
-        height: 400,
+        height: 350,
         width: 350,
         plot_bgcolor: 'rgba(255, 255, 255, 0)',
         paper_bgcolor: 'rgba(255, 255, 255, 0)'

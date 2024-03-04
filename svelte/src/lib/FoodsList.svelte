@@ -33,23 +33,26 @@
 </script>
 <div class='accordion'>
     <div class='accordion-item' class:active={isAccOpen}>
-        <button class="accordion-header selected-foods-header h-8 container flex justify-between"on:click={toggleAccord}>
-            <button>{accSymbol}</button>
-            <h3 class="font-bold">Selected meals</h3>
-            <div class ="h-8">
-                <span>Day to register</span>
-                <input type="date" class="h-8 w-32">
-                <button class='bg-kcal-light rounded text-black border-b-red h-8 w-16' on:click={addGrams}>Submit</button>
-            </div>
-        </button>
-        <div class=" accordion-content">
+        <div class="accordion-header selected-foods-header h-8 mb-1 container flex justify-between">
+            <button class="accordion-btn" on:click={toggleAccord}>{accSymbol}</button>
+            <h3 >Selected meals</h3>
+        </div>
+        <div class="accordion-content">
             {#each listedFoods as food, i}
-                <div class="grid grid-cols-3 h-16" style="position: relative;">
-                    <img class="w-full h-full object-cover" src={food.photo} alt="{food.name}">
+            <div class="flex gap-1">
+                <div class="h-12 w-12" style="position: relative;">
+                    <img class="h-full " src={food.photo} alt="{food.name}">
                     <button class='bg-protein-light h-6 w-6 rounded-full text-fat-dark hover:bg-protein-dark' style='position: absolute; top: 0; right: 0;' id={i} on:click={removeFromList}>X</button>
-                    <input class="col-span-2" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
                 </div>
+                <input class="w-full" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
+            </div>
+                
             {/each}
+        </div>
+        <div class="flex max-h-8 items-center">
+            <span class="flex ">Day:</span>
+            <input type="date" class="max-h-8">
+            <button class='bg-kcal-light rounded text-black h-full' on:click={addGrams}>Submit</button>
         </div>
     </div>
 </div>

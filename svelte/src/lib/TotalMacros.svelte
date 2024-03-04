@@ -32,10 +32,10 @@
 <div class="accordion">
     <div class="accordion-item" class:active={isAccordionOpen}>
         {#if totalMacros}
-            <button class='accordion-header flex w-full ' on:click={toggleAccordion}>
-                {accordionSymbol} 
-                <h3>Summary</h3> 
-            </button>
+            <div class='accordion-header flex justify-between h-8' >
+                <button class="accordion-btn" on:click={toggleAccordion}>{accordionSymbol}</button> 
+                <h3 >Summary </h3>
+            </div>
             <div class='accordion-content'>
                 <div id="summary-header"class ='grid grid-cols-6'>
                     <th class=' '>Food</th>

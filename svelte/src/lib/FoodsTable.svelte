@@ -51,7 +51,7 @@
     }
 </script>
     
-<div class="favorites grid grid-cols-10 max-h-16 w-full">
+<div class="favorites flex gap-2 max-h-8 w-full">
     {#each favorites as favFood, i}
     <div class="h-16" style="position: relative;">
         <button id={i} on:click={pushFavoriteToList} class="h-full w-16 relative">
@@ -63,15 +63,17 @@
 </div>
 <div class='accordion container'>
     <div id='food-table' class='accordion-item' class:active={isAccordionOpen} >
-        <button id = 'food-table-header' class='accordion-header w-full flex 'on:click={toggleAccordion}>
-            <th class='w-1/12'> {accordionSymbol} </th>
-            <th class='w-5/12'>Name</th>
-            <th class='w-1/12'>GI</th>
-            <th class='w-1/12'>GL</th>
-            <th class='w-1/12'>kcal</th>
-            <th class='w-1/12'>Carbs</th>
-            <th class='w-1/12'>Prots</th>
-            <th class='w-1/12'>Fats</th>
+        <button id = 'food-table-header' class='accordion-header w-full grid grid-cols-12 '>
+            <th class='col-span-1'>
+                <button class='accordion-btn' on:click={toggleAccordion}> {accordionSymbol}  </button>
+            </th>
+            <th class='col-span-5'>Name</th>
+            <th class='col-span-1'>GI</th>
+            <th class='col-span-1'>GL</th>
+            <th class='col-span-1 text-kcal-light'>kcal</th>
+            <th class='col-span-1 text-carb-light'>Carbs</th>
+            <th class='col-span-1 text-protein-light'>Prots</th>
+            <th class='col-span-1 text-fat-light'>Fats</th>
         </button>
         <div id='food-table-content' class='accordion-content'>
             {#each rows as food , i}
@@ -89,18 +91,15 @@
                 </td>
                 <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.GI}</td>
                 <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.GL}</td>
-                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.calories}</td>
-                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.carbohydrates}</td>
-                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.proteins}</td>
-                <td class= "text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.fats}</td>
+                <td class= "text-kcal-light text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.calories}</td>
+                <td class= "text-carb-light text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.carbohydrates}</td>
+                <td class= "text-protein-light text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.proteins}</td>
+                <td class= "text-fat-light text-left align-middle h-full group-hover:bg-fat-dark group-hover:text-carb-dark">{food.fats}</td>
             </button>
             {/each}
         </div>
     </div>
 </div>
 <style>
-    #food-table-header{
-        height: 3em;
-    }
 </style>
 
