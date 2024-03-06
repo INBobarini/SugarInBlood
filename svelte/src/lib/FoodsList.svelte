@@ -30,27 +30,28 @@
         }) 
     }
 </script>
-<div class='container accordion min-w-sm'>
-    <div class='accordion-item' class:active={isAccOpen}>
-        <div class="accordion-header selected-foods-header h-8 mb-1 container flex justify-between">
+<div class='container accordion'>
+    <div class='accordion-item ' class:active={isAccOpen}>
+        <div class="accordion-header selected-foods-header h-8 mb-1 flex justify-between">
             <button class="accordion-btn" on:click={toggleAccord}>{accSymbol}</button>
             <h3 >Selected meals</h3>
         </div>
-        <div class="accordion-content flex flex-wrap">
+        <div class="accordion-content">
+            <div class="flex flex-wrap">
             {#each listedFoods as food, i}
             <div class="flex h-12 w-1/2">
                 <div class="flex relative w-12">
-                    <img class="object-cover" src={food.photo} alt="{food.name}">
+                    <img class="object-cover rounded-l-full" src={food.photo} alt="{food.name}">
                     <button class='bg-protein-light h-6 w-6 rounded-full text-fat-dark hover:bg-protein-dark' style='position: absolute; top: 0; right: 0;' id={i} on:click={removeFromList}>X</button>
                 </div>
-                <input class="w-1/2 h-full" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
-                <input class="w-1/3 h-full" name="time" type="time" step="1800">
+                <input class="w-1/2 h-full border border-none" name='grams' type="number" placeholder="grams" bind:value={gramsArray[i]}>
+                <input class="w-1/3 h-full border border-none rounded-r-full" name="time" type="time" step="1800">
             </div>
             {/each}
-            <div class="flex h-12 items-center">
-                <span class="flex ">Day:</span>
-                <input type="date" class="max-h-8">
-                <button class='bg-kcal-light rounded text-black max-h-8 p-1' on:click={addGrams}> ArrowLeft </button>
+                <div class="flex h-12 w-full items-center justify-end">
+                    <input type="date" class="max-h-8 mr-2 rounded-full">
+                    <button class='bg-kcal-light rounded-full text-black h-9 w-9 p-2 mr-1' on:click={addGrams}> ➤ </button>
+                </div>
             </div>
         </div>
     </div>

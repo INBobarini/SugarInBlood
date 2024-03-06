@@ -7,7 +7,7 @@ export let data
 //--- Components ---
 import FoodsTable from '../lib/FoodsTable.svelte';
 import FilterByInitial from '../lib/FilterByInitial.svelte';
-import FilterByQuery from '../lib/FilterByQuery.svelte';
+
 import FoodsList from '../lib/FoodsList.svelte';
 import TotalMacros from '../lib/TotalMacros.svelte';
 
@@ -16,23 +16,21 @@ import TotalMacros from '../lib/TotalMacros.svelte';
 
 let foods = data.foods
 $: favoriteFoods = []
-$: foodsToShow = [...foods.slice(0, 10)]
 $: selectedFoods = []
 $: totalMeals = []
 $: totalMacros = {}
 
-
 </script>
 
 <div class ='container flex flex-wrap'>
-    <div class= 'container  min-w-lg'>
+    <div class= 'max-w-lg'>
         <!--<FilterByInitial rows = {foods} bind:filteredRows = {foodsToShow}/>-->
-        <FilterByQuery rows = {foods} bind:filteredRows = {foodsToShow}/>
+        
         {#if foods}
-        <FoodsTable rows = {foodsToShow} bind:selectedRows = {selectedFoods} bind:favorites = {favoriteFoods}/>
+        <FoodsTable rows = {foods} bind:selectedRows = {selectedFoods} bind:favorites = {favoriteFoods}/>
         {/if}
     </div>
-    <div class='container flex flex-wrap max-w-lg'>
+    <div class='max-w-lg'>
         {#if selectedFoods.length}
             {#if selectedFoods.length}
             <FoodsList bind:listedFoods = {selectedFoods} bind:total = {totalMeals}/>
